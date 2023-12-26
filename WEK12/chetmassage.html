@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chat Message</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #chatbox {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+      height: 400px;
+      background-color: #f2f2f2;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow-y: scroll;
+      padding: 10px;
+    }
+
+    #message-container {
+      margin-bottom: 10px;
+    }
+
+    #message-container .sender {
+      font-weight: bold;
+    }
+
+    #message-container .message {
+      margin-top: 5px;
+    }
+
+    #input-container {
+      margin-top: 10px;
+    }
+
+    #input-container input[type="text"] {
+      width: 200px;
+      padding: 5px;
+    }
+
+    #input-container input[type="submit"] {
+      padding: 5px 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="chatbox">
+    <div id="message-container">
+      <div class="sender">John Doe:</div>
+      <div class="message">Hello, how are you?</div>
+    </div>
+    <div id="message-container">
+      <div class="sender">Jane Smith:</div>
+      <div class="message">I'm good, thank you!</div>
+    </div>
+  </div>
+
+  <div id="input-container">
+    <input type="text" id="message-input" placeholder="Type your message...">
+    <input type="submit" value="Send" onclick="sendMessage()">
+  </div>
+
+  <script>
+    function sendMessage() {
+      var messageInput = document.getElementById("message-input");
+      var message = messageInput.value;
+
+      if (message !== "") {
+        var chatbox = document.getElementById("chatbox");
+        var messageContainer = document.createElement("div");
+        var sender = document.createElement("div");
+        var messageText = document.createElement("div");
+
+        messageContainer.classList.add("message-container");
+        sender.classList.add("sender");
+        messageText.classList.add("message");
+
+        sender.textContent = "You:";
+        messageText.textContent = message;
+
+        messageContainer.appendChild(sender);
+        messageContainer.appendChild(messageText);
+        chatbox.appendChild(messageContainer);
+
+        messageInput.value = "";
+      }
+    }
+  </script>
+</body>
+</html>

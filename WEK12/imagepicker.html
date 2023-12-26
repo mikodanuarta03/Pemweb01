@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Picker</title>
+  <style>
+    .image-container {
+      margin-top: 20px;
+    }
+
+    .image-container img {
+      max-width: 400px;
+      max-height: 400px;
+    }
+
+    .alert {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #f2f2f2;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h1>Image Picker</h1>
+
+  <label for="imageDropdown">Pilih Gambar:</label>
+  <select id="imageDropdown" onchange="showImage()">
+    <option value="">-- Pilih Gambar --</option>
+    <option value="kucingputih.jpeg">Gambar 1</option>
+    <option value="kanguru.jpeg">Gambar 2</option>
+    <option value="harimau.jpeg">Gambar 3</option>
+    <option value="macan.jpeg">Gambar 4</option>
+    <option value="panda.jpeg">Gambar 5</option>
+    <option value="beruang.jpeg">Gambar 6</option>
+    <option value="monyet.jpeg">Gambar 7</option>
+    <option value="halodek.jpeg">Gambar 8</option>
+    <option value="nyamuk.jpeg">Gambar 9</option>
+    <option value="elang.jpeg">Gambar 10</option>
+  </select>
+
+  <div class="image-container">
+    <img id="selectedImage" src="" alt="Selected Image">
+  </div>
+
+  <div id="alertBox" class="alert" style="display: none;"></div>
+
+  <script>
+    function showImage() {
+      var dropdown = document.getElementById("imageDropdown");
+      var selectedImage = document.getElementById("selectedImage");
+      var alertBox = document.getElementById("alertBox");
+
+      var selectedValue = dropdown.value;
+      if (selectedValue !== "") {
+        selectedImage.src = selectedValue;
+        alertBox.style.display = "block";
+        alertBox.innerHTML = "Nama File Gambar: " + selectedValue;
+      } else {
+        selectedImage.src = "";
+        alertBox.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
